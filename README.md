@@ -8,4 +8,5 @@ b.ziwoong님의 개인 '웰스 브리프(Private Wealth Brief)' 주간 발행 �
 
 | 발행일 | Vol | 한 줄 요약 | 링크 |
 |---|---|---|---|
+| 2026-09-06 | Vol.7 | 미 8월 고용 서프라이즈(+16.2만)로 9월 인상 확률 52%→59%, 국면은 리플레이션 재확인 쪽으로 이동. 다산 GTX-B 심화(별내역 환승 구조) 및 인덕원 GTX-C 실제 착공 지연 확인. | [briefs/wealth-brief-weekly-20260906.html](briefs/wealth-brief-weekly-20260906.html) |
 | 2026-09-04 | Vol.6 | 한미 동시 긴축(한국 3.00%, 美 매파적) + 9월 전국 입주물량 6년 5개월 최저로 전세 상방압력. 다산 GTX-B 재정구간 공정률 5.7%. | [briefs/wealth-brief-weekly-20260904.html](briefs/wealth-brief-weekly-20260904.html) |
