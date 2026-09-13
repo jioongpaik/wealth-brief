@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Wealth Brief · Vol.8</title>
+<style>
+  :root{
+    --bg:#faf7f2;
+    --paper:#ffffff;
+    --ink:#1f1c18;
+    --ink-soft:#54504a;
+    --line:#e6e0d6;
+    --accent:#8a5a3b;
+    --accent-soft:#f1e6d8;
+    --good:#3d6b4f;
+    --warn:#a3552b;
+    --tag-bg:#efe9de;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Georgia",serif;
+    line-height:1.62;
+    padding:0 0 64px 0;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 24px 0 24px;
+  }
+  header.masthead{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:28px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:26px;
+    line-height:1.3;
+    margin:0 0 10px 0;
+    font-weight:700;
+  }
+  .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .headline-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:16px 18px;
+    margin-bottom:32px;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .headline-box b{color:var(--accent);}
+  section{margin-bottom:34px;}
+  h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    margin:0 0 16px 0;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  h2 .num{color:var(--accent); font-weight:700;}
+  p{margin:0 0 12px 0; font-size:15px;}
+  .sub{font-size:13px; color:var(--ink-soft); margin-top:-6px; margin-bottom:14px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    margin-bottom:10px;
+    background:var(--paper);
+  }
+  th,td{
+    text-align:left;
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    border-bottom:1.5px solid var(--ink);
+  }
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .src{font-size:11px; color:#8a8378;}
+  .tag{
+    display:inline-block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    padding:2px 8px;
+    border-radius:10px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    margin-left:6px;
+  }
+  .tag.uncertain{background:#f6e6d8; color:var(--warn);}
+  .quadrant{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .quadrant .label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  ul{margin:0 0 12px 0; padding-left:20px;}
+  li{margin-bottom:6px; font-size:15px;}
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .checklist li::before{
+    content:"☐";
+    color:var(--accent);
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .allocation{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .alloc-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:14px 16px;
+  }
+  .alloc-card h3{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin:0 0 8px 0;
+    color:var(--ink-soft);
+  }
+  .alloc-card .amt{font-size:20px; font-weight:700; margin-bottom:8px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  .alloc-card ul{margin:0; padding-left:16px; font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; color:var(--ink-soft);}
+  .alloc-card li{margin-bottom:4px;}
+  .note-box{
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-top:10px;
+  }
+  .quote{
+    font-style:italic;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 16px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .quote .attr{
+    display:block;
+    font-style:normal;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--accent);
+    margin-top:6px;
+  }
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:16px;
+    margin-top:36px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  @media (max-width:480px){
+    .allocation{grid-template-columns:1fr;}
+    h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="kicker">Private Wealth Brief · 개인 리서치 노트</div>
+  <h1>2026년 9월 둘째 주 — 뜨거운 8월 CPI, FOMC 앞두고 인상 베팅 급등</h1>
+  <div class="meta">
+    <span>Vol.8</span>
+    <span>발행일 2026-09-13</span>
+    <span>읽는 시간 약 2~3분</span>
+  </div>
+</header>
+
+<div class="headline-box">
+  <b>이번 주 한 줄:</b> 9/11 발표된 미 8월 CPI가 헤드라인 +0.4%(YoY 3.4%)·코어 +0.3%(YoY 2.4%)로 예상보다 뜨겁게 나오면서, 9/15~16 FOMC 인상 확률이 지난주 약 59%에서 66~85%(출처별 편차 큼)로 크게 뛰었습니다. 반면 원/달러는 반대로 1,340원선 아래(9/9 오후 1,336원대)까지 내려가 23개월래 최저를 기록해, '미 인상 기대 급등'과 '원화 강세'가 동시에 나타나는 다소 이례적인 조합입니다. 부동산은 9월 전국 입주물량이 5년5개월 최저(1만4,174가구)로 재확인됐고, 다산신도시는 GTX-B 외에 서울 9호선 강동~남양주 연장(2031년 목표)이 새로운 변수로 부각됐습니다.
+</div>
+
+<section>
+  <h2><span class="num">01</span> 거시 스냅샷</h2>
+  <p class="sub">모든 수치는 검색 시점(2026-09-13) 기준 참고용 스냅샷이며, 향후 발표치로 갱신될 수 있습니다.</p>
+  <table>
+    <tr><th>지표</th><th>현재값</th><th>코멘트</th></tr>
+    <tr>
+      <td>한국 기준금리</td>
+      <td class="num">3.00%</td>
+      <td>7월(2.50→2.75%)·8월(2.75→3.00%) 연속 인상 이후 동결 유지 중, 이번 주 별도 결정 없음 <span class="src">(한국은행)</span></td>
+    </tr>
+    <tr>
+      <td>미 기준금리(FF)</td>
+      <td class="num">3.50~3.75%</td>
+      <td>동결 유지 중이나 9/15~16 FOMC(점도표 포함 SEP 발표 예정) 인상 확률이 CME FedWatch 기준 8/말 56~66%에서 9/11~12 66~85%로 급등 — 8월 CPI 서프라이즈와 8월 잭슨홀 워시 의장 발언 영향 <span class="tag uncertain">확정 아님, 출처별 편차 큼</span></td>
+    </tr>
+    <tr>
+      <td>미 장단기금리차(10Y-2Y)</td>
+      <td class="num">+0.35%p</td>
+      <td>9/11 기준 10Y 4.96% · 2Y 4.63%, 역전 아님. 지난주(+0.40%p)보다 소폭 축소</td>
+    </tr>
+    <tr>
+      <td>미 CPI(YoY)</td>
+      <td class="num">3.4% (8월)</td>
+      <td>9/11 발표. 헤드라인 MoM +0.4%, 코어 MoM +0.3%(예상 상회)·코어 YoY 2.4%. 에너지가 주도(연료 YoY +28%, 경유 YoY +52%) <span class="src">(BLS)</span></td>
+    </tr>
+    <tr>
+      <td>미 고용(NFP)</td>
+      <td class="num">+16.2만 (8월, 전주 발표)</td>
+      <td>9/4 발표된 8월분에서 변동 없음. 이번 주 신규 고용지표 발표는 없었음</td>
+    </tr>
+    <tr>
+      <td>원/달러</td>
+      <td class="num">약 1,336~1,340원</td>
+      <td>9/7 주간 종가 1,340.5원(23개월래 최저), 9/9 오후 1,336.1원까지 하락. 수출기업 달러 매도·외화자금 유입이 원화 강세 요인으로 지목 — 미 인상 기대 급등과는 반대 방향이라 다음 주 방향성 재확인 필요 <span class="tag uncertain">단기 변동성 높음</span></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">02</span> 국면 판단 — 성장×물가 4사분면</h2>
+  <div class="quadrant">
+    <div class="label">현재 위치 추정: 리플레이션 심화 — 과열 경계 쪽 <span class="tag uncertain">불확실성 높음</span></div>
+    <p style="margin-bottom:0;">지난주 8월 고용 서프라이즈(+16.2만)로 '성장 재확인' 쪽으로 이동했던 진단이, 이번 주 8월 CPI(코어 +0.3% MoM, 예상 상회)까지 겹치며 '성장은 견조, 물가는 더 뜨거워짐'으로 한 단계 더 나아갔습니다. 견조한 고용과 재가속하는 물가가 함께 나타나는 조합은 4사분면 중 <b>리플레이션이 과열 쪽으로 기우는 국면</b>에 해당하며, 이 때문에 시장의 9월 인상 베팅이 단기간에 크게 뛰었습니다. 다만 원/달러가 동시에 원화 강세로 움직인 점은 이 진단과 다소 엇갈리는 신호라, 9/16 FOMC 결과와 점도표(SEP)를 확인한 뒤 재정리가 필요합니다.</p>
+  </div>
+  <p><b>계좌별 함의:</b> RIA 계좌는 여전히 국내 상장 주식 + 국내 주식형 ETF/펀드(국내 비중 80%↑) + 예탁금(현금)으로만 투자 대상이 제한돼 있어, 국면이 '과열 경계'로 기울어도 RIA 안에서 실행 가능한 대응은 국내 주식형 슬리브 내 방어형(저변동·고배당) 비중 점검과 현금 비중 유지뿐입니다. 인상 확률이 뛸수록 RIA 밖 계좌(일반 위탁·연금저축·ISA)의 금·장기국채 등 진짜 헤지 자산의 상대적 역할이 이번 주도 다시 한 번 커졌습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">03</span> 환(FX) 코멘트</h2>
+  <p>원/달러가 1,340원선을 하회해 23개월래 최저 수준까지 내려온 점이 이번 주 가장 눈에 띄는 대목입니다. 통상 미 인상 기대가 급등하면 달러 강세(원화 약세) 압력이 커지는데, 이번엔 국내 수출기업의 달러 매도 물량과 대규모 외화자금 유입이 더 강하게 작용하며 반대로 원화가 강세를 보였습니다. 기보유 해외주식 4천만원의 환노출 관점에서는, 원화 강세가 이어질 경우 원화 환산 평가액이 다소 눌리는 방향이라는 점을 유의할 필요가 있습니다. RIA 계좌 구조상 신규 해외 자산 매수는 대상이 아니므로, 이 환노출은 어디까지나 기보유분에 국한된 감각 점검 대상입니다. FOMC 결과 발표 이후 방향이 다시 바뀔 수 있어 다음 주 재확인이 필요합니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">04</span> 부동산 데이터 체크 — 다산 9호선 연장 변수 부각</h2>
+  <div class="quadrant">
+    <div class="label">다산 후속 노트 — GTX-B 외에 9호선 연장 등장</div>
+    <p style="margin-bottom:0;">지난주 정리한 대로 다산신도시 자체에는 GTX-B 정차역이 없고, 8호선 별내선을 통한 별내역 환승이 핵심 경로라는 점은 그대로입니다. 이번 주 새로 확인된 변수는 <b>서울 9호선(강동~하남~남양주선) 연장</b>으로, 강동구 강일동에서 다산신도시 지금지구를 지나 왕숙2·왕숙1지구까지 이어지는 약 18.1km 구간입니다. 2026년 상반기 착공, 2031년 개통이 목표로 거론되나, 남양주시가 진건지구 편입 관련 예비타당성(경제성)을 별도로 검토 중이어서 사업 구간·시기가 아직 유동적입니다 <span class="tag uncertain">확정 아님</span>. 즉 다산의 서울 접근성 개선은 ① 별내역 경유 GTX-B 환승, ② 9호선 직접 연장 두 갈래로 나뉘어 진행 중이며, 두 사업 모두 개통 목표가 2031년 전후로 비슷해 실제 체감 개선은 여전히 5년 이상 뒤로 봐야 합니다.</p>
+  </div>
+  <table>
+    <tr><th>지역</th><th>이번 주 신호</th></tr>
+    <tr>
+      <td>태릉입구</td>
+      <td>지난주(7/22 지구단위계획 변경, 용적률 최대 800%·높이 100m) 대비 이번 주 새로운 공식 발표는 확인되지 않음 — 현재 진행 상황 유지 중.</td>
+    </tr>
+    <tr>
+      <td>인덕원(GTX-C)</td>
+      <td>4/30 실착공 확인 재확인. 인덕원역 구간 공사는 2028년까지 예정이며, 완공 시 4호선 + GTX-C + 월곶판교선 + 인덕원~동탄선이 겹치는 4중 역세권으로 계획돼 있음.</td>
+    </tr>
+    <tr>
+      <td>고양(GTX-A)</td>
+      <td>서울역~수서 구간 개통이 시공 지연으로 6월→8월로 순연됐다는 보도가 있었으나, 삼성역은 당분간 무정차 통과로 운영하고 완전 정차·이용은 2028년 전후로 예상돼 실제 '완전개통' 체감 시점은 여전히 뒤로 밀릴 가능성 <span class="tag uncertain">8월 개통 실제 시행 여부 미확인</span>. (창릉역 신설은 2030년 별도 계획, 변동 없음)</td>
+    </tr>
+  </table>
+  <p style="margin-top:6px;"><b>전국 입주물량:</b> 9월 전국 아파트 입주 예정 물량이 1만4,174가구로 확정 보도되며 5년5개월 만에 최저치임이 재확인됐습니다(경기 5,950 · 서울 3,438 · 인천 126가구). 인천·대전·대구 등 일부 도시는 입주물량이 사실상 제로 수준에 수렴해 지역별 전월세 변동성이 커질 수 있다는 분석입니다. 대출 쪽은 스트레스 DSR 3단계가 계속 적용 중이며, 1금융권 DSR 상한 40%(2금융권 50%) 체계가 유지되고 있어 잔금대출·매도 지연 이슈가 이어질 가능성이 있습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">05</span> 반도체 메모</h2>
+  <p>2026년 2분기 기준 HBM 시장점유율은 SK하이닉스 50%(1위 유지), 삼성전자 33%(전분기 21%에서 +12%p 상승)로, 두 회사 간 격차가 37%p에서 17%p로 좁혀졌습니다. 2026년 영업이익 전망은 SK하이닉스 약 261조원(전년 대비 +452%), 삼성전자는 반도체 부문에서 약 74.3조원 수준이 거론되고 있습니다(증권사·리서치기관 전망치, 매수 권유 아님). 주가 흐름 면에서는 올해 들어 반도체가 빅테크를 압도적으로 앞서는 모습으로, 마이크론(YTD +220%)·마벨(+185%) 등이 급등한 반면 '매그니피센트 7' ETF는 +4%에 그쳤다는 보도가 있습니다. 엔비디아는 AI 가속기 시장의 85~92%를 점유한 것으로 추정되며, 퀄컴 경쟁사 성격의 AI 반도체 스타트업에 약 35억달러를 투자하는 등 사업 다각화 움직임도 나타나고 있습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">06</span> RIA 대기예수금 배치 확인 (성장 7 : 안전 3)</h2>
+  <p class="sub">약 1,600만원, RIA 계좌 내 — 국내 주식형 ETF/펀드 + 예탁금(현금)으로만 구성. 2주 연속 체크리스트에 담긴 항목이라 이번 주는 반드시 실행 여부를 확정할 필요가 있습니다.</p>
+  <div class="allocation">
+    <div class="alloc-card">
+      <h3>성장(주식) · 1,120만</h3>
+      <ul>
+        <li>국내 대표지수 ETF — 800만</li>
+        <li>국내 저변동·고배당 ETF — 320만 (방어형 주식이 '보험' 역할 대체)</li>
+      </ul>
+    </div>
+    <div class="alloc-card">
+      <h3>안전 · 480만</h3>
+      <ul>
+        <li>예탁금(현금) — 480만 전액</li>
+        <li>위기방어·저점매수 실탄 용도</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note-box">RIA 계좌는 국내 상장 주식 + 국내 주식 비중 80%↑ ETF/펀드 + 현금(예탁금)만 편입 가능해, 금·채권·초단기채·해외지수 ETF는 애초에 대상이 아닙니다. 진짜 보험(금현물, 장기국채)은 일반 위탁·연금저축·ISA 등 RIA 밖 계좌에서 별도로 쌓는 구조로 접근합니다.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> 이번 주 할 일</h2>
+  <ul class="checklist">
+    <li>9/15~16(화~수) FOMC 결과 및 점도표(SEP) 확인 — 실제 인상 여부와 향후 경로가 이번 주 뛴 66~85% 확률을 확인/부정하는지 체크하고, RIA 국내 주식형 슬리브 리밸런싱 필요 여부 점검</li>
+    <li>RIA 대기예수금 1,600만원 배치 실행 여부 최종 확정(2주 연속 이월) — 성장 1,120만(국내 대표지수 800 / 국내 저변동·고배당 320), 안전 480만(예탁금 현금 전액) 분할 매수 주문 후 체결 확인</li>
+    <li>원/달러 1,340원 하회 흐름이 FOMC 이후에도 유지되는지 주간 환율 스크랩 + 남양주시 9호선 연장(진건지구 편입) 예비타당성 검토 결과, 국토부 실거래가 공개시스템 다산·별내 최근 3개월 갱신 확인</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">08</span> 한 줄 학습 포인트</h2>
+  <div class="quote">
+    "투자자들이 반복해서 저지르는 실수 중 하나는, 사이클이 정점에 가까워질수록 오히려 더 낙관적으로 변한다는 것이다."
+    <span class="attr">— 하워드 막스(Howard Marks), 오크트리 캐피털 (취지 기준 의역)</span>
+  </div>
+  <p style="margin-top:8px;">이번 주처럼 인상 확률이 단기간에 급등하는 국면일수록, 한 번의 강한 지표(8월 CPI)에 근거해 포트폴리오를 크게 흔들기보다 FOMC라는 다음 확인 지점까지는 계좌별 역할 분리(RIA=국내 주식형+현금, RIA 밖=보험·글로벌)를 그대로 유지하며 관찰하는 편이 합리적입니다.</p>
+</section>
+
+<footer>
+  본 브리프는 교육·정보 제공 목적의 개인 리서치 노트이며, 작성자는 라이선스를 보유한 투자자문업자가 아닙니다. 특정 종목·ETF·부동산의 매수/매도를 권유하지 않으며, 본문의 수치·목표가·전망치는 예시 및 참고 자료로 실제 수치와 다를 수 있습니다(특히 FOMC 인상 확률, GTX-A 개통 시점, 9호선 연장 사업 구간·시기, 입주물량 통계는 출처·기관별 편차가 있어 모두 추정·불확실 표기 대상입니다). 실제 투자·대출·세무 의사결정 전에는 반드시 증권사, 은행, 세무 전문가와 직접 상담하시기 바라며, 투자의 최종 책임은 본인에게 있습니다.
+</footer>
+
+</div>
+</body>
+</html>
