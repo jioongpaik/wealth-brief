@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Wealth Brief · Vol.9</title>
+<style>
+  :root{
+    --bg:#faf7f2;
+    --paper:#ffffff;
+    --ink:#1f1c18;
+    --ink-soft:#54504a;
+    --line:#e6e0d6;
+    --accent:#8a5a3b;
+    --accent-soft:#f1e6d8;
+    --good:#3d6b4f;
+    --warn:#a3552b;
+    --tag-bg:#efe9de;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Georgia",serif;
+    line-height:1.62;
+    padding:0 0 64px 0;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 24px 0 24px;
+  }
+  header.masthead{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:28px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:26px;
+    line-height:1.3;
+    margin:0 0 10px 0;
+    font-weight:700;
+  }
+  .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .headline-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:16px 18px;
+    margin-bottom:32px;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .headline-box b{color:var(--accent);}
+  section{margin-bottom:34px;}
+  h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    margin:0 0 16px 0;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  h2 .num{color:var(--accent); font-weight:700;}
+  p{margin:0 0 12px 0; font-size:15px;}
+  .sub{font-size:13px; color:var(--ink-soft); margin-top:-6px; margin-bottom:14px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    margin-bottom:10px;
+    background:var(--paper);
+  }
+  th,td{
+    text-align:left;
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    border-bottom:1.5px solid var(--ink);
+  }
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .src{font-size:11px; color:#8a8378;}
+  .tag{
+    display:inline-block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    padding:2px 8px;
+    border-radius:10px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    margin-left:6px;
+  }
+  .tag.uncertain{background:#f6e6d8; color:var(--warn);}
+  .quadrant{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .quadrant .label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  ul{margin:0 0 12px 0; padding-left:20px;}
+  li{margin-bottom:6px; font-size:15px;}
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .checklist li::before{
+    content:"☐";
+    color:var(--accent);
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .allocation{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .alloc-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:14px 16px;
+  }
+  .alloc-card h3{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin:0 0 8px 0;
+    color:var(--ink-soft);
+  }
+  .alloc-card .amt{font-size:20px; font-weight:700; margin-bottom:8px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  .alloc-card ul{margin:0; padding-left:16px; font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; color:var(--ink-soft);}
+  .alloc-card li{margin-bottom:4px;}
+  .note-box{
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-top:10px;
+  }
+  .quote{
+    font-style:italic;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 16px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .quote .attr{
+    display:block;
+    font-style:normal;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--accent);
+    margin-top:6px;
+  }
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:16px;
+    margin-top:36px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  @media (max-width:480px){
+    .allocation{grid-template-columns:1fr;}
+    h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="kicker">Private Wealth Brief · 개인 리서치 노트</div>
+  <h1>2026년 9월 셋째 주 — 연준, 3년2개월 만에 실제 인상 단행 · 원/달러 1,380원대 복귀</h1>
+  <div class="meta">
+    <span>Vol.9</span>
+    <span>발행일 2026-09-20</span>
+    <span>읽는 시간 약 2~3분</span>
+  </div>
+</header>
+
+<div class="headline-box">
+  <b>이번 주 한 줄:</b> 지난주 급등했던 인상 베팅(66~85%)이 실제로 현실화됐습니다. 9/16(수) FOMC는 기준금리를 3.50~3.75%에서 3.75~4.00%로 0.25%p 인상(12-0 만장일치)했고, 2023년 7월 이후 3년2개월 만의 인상입니다. 점도표(SEP)는 연내 1회 추가 인상(연말 중위값 4.10%)과 2027년까지 고금리 장기화를 시사하는 매파적 내용으로 평가됐습니다. 반응은 지난주와 정반대로, 원/달러가 9/16 1,368.6원 → 9/17 1,382.2원까지 반등하며 23개월래 최저(9/9 1,336원대)를 3주 만에 벗어났습니다. 한편 한국 8월 근원 CPI는 7월 2.6%에서 3.4%로 크게 뛰어 국내 물가도 같은 방향으로 재가속하는 모습이 확인됐습니다. 부동산은 GTX-A 삼성역 개통이 철근 누락 이슈로 당초 8/15에서 연내(2026년 말)로 재차 지연됐습니다.
+</div>
+
+<section>
+  <h2><span class="num">01</span> 거시 스냅샷</h2>
+  <p class="sub">모든 수치는 검색 시점(2026-09-20) 기준 참고용 스냅샷이며, 향후 발표치로 갱신될 수 있습니다.</p>
+  <table>
+    <tr><th>지표</th><th>현재값</th><th>코멘트</th></tr>
+    <tr>
+      <td>한국 기준금리</td>
+      <td class="num">3.00%</td>
+      <td>7월(2.50→2.75%)·8월(2.75→3.00%) 연속 인상 이후 동결 유지. 다음 통화정책방향 결정회의는 10/22(목) 예정 <span class="src">(한국은행)</span></td>
+    </tr>
+    <tr>
+      <td>미 기준금리(FF)</td>
+      <td class="num">3.75~4.00%</td>
+      <td>9/16 FOMC에서 0.25%p 인상 단행(12-0 만장일치), 2023년 7월 이후 3년2개월 만의 인상. 점도표는 연내 1회 추가 인상(연말 중위 4.10%, 6월 전망 3.80%에서 상향) 및 2027년까지 고금리 장기화를 시사 — 시장은 예상보다 매파적으로 평가 <span class="src">(Fed, CNBC)</span></td>
+    </tr>
+    <tr>
+      <td>미 장단기금리차(10Y-2Y)</td>
+      <td class="num">약 +0.26%p</td>
+      <td>9/17 기준 10Y 4.93% · 2Y 4.67%. FOMC 직후 일시 상승했다가 다음날 국채 매도세가 진정되며 10Y·2Y 모두 하락, 스프레드는 지난주(+0.35%p)보다 축소 <span class="tag uncertain">단기 변동성 높음</span></td>
+    </tr>
+    <tr>
+      <td>미 CPI(YoY)</td>
+      <td class="num">3.4% (8월, 변동 없음)</td>
+      <td>9/11 발표분 유지. 이번 주 새로운 CPI 발표는 없었음</td>
+    </tr>
+    <tr>
+      <td>한국 CPI(YoY)</td>
+      <td class="num">3.1% (8월)</td>
+      <td>9/2 발표, 시장 예상(3.2%)을 소폭 하회했으나 전월(3.1%)과 유사한 수준 유지. <b>근원 CPI는 7월 2.6%→8월 3.4%로 크게 가속</b> — 국제유가 상승(美-이란 휴전 협상 결렬 영향)이 주요 요인으로 지목 <span class="src">(통계청)</span></td>
+    </tr>
+    <tr>
+      <td>미 고용(NFP)</td>
+      <td class="num">+16.2만 (8월, 변동 없음)</td>
+      <td>9/4 발표분 유지. 이번 주 신규 고용지표 발표는 없었음</td>
+    </tr>
+    <tr>
+      <td>원/달러</td>
+      <td class="num">약 1,368~1,382원</td>
+      <td>9/16 1,368.6원(+9.2원) → 9/17 1,382.2원(+13.6원)으로 이틀 연속 상승, 3주 만에 1,380원대 복귀. 달러인덱스(DXY)도 100 상회(8/13 이후 최초). 지난주 '인상 기대 급등+원화 강세'의 이례적 조합이 실제 인상 이후엔 통상적 방향(강달러·원화 약세)으로 정상화된 모습 <span class="tag uncertain">추세적 반등인지는 추가 확인 필요</span></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">02</span> 국면 판단 — 성장×물가 4사분면</h2>
+  <div class="quadrant">
+    <div class="label">현재 위치 추정: 리플레이션 심화 (연준 실제 대응으로 확인) <span class="tag uncertain">불확실성 있음</span></div>
+    <p style="margin-bottom:0;">지난주 '리플레이션 과열 경계'로 진단했던 국면이 이번 주 연준의 실제 인상 단행과 매파적 점도표로 한 번 더 확인됐습니다. 견조한 고용(8월 NFP +16.2만)과 재가속하는 물가(미 코어 CPI 2.4%, 한국 코어 CPI 3.4%로 급등)가 동시에 나타나며 연준이 3년2개월 만에 실제 긴축 카드를 꺼낸 것은, '성장은 버티는데 물가가 다시 뜨거워지는' 국면임을 정책당국이 직접 인정한 셈입니다. 다만 점도표상 인상 경로가 완만(연내 1회)한 점, FOMC 직후 국채 매도세가 하루 만에 진정된 점을 보면 시장이 이를 '경기 침체를 유발할 만큼의 긴축'으로까지 보지는 않는 것으로 해석됩니다.</p>
+  </div>
+  <p><b>계좌별 함의:</b> RIA 계좌는 여전히 국내 상장 주식 + 국내 주식형 ETF/펀드(국내 비중 80%↑) + 예탁금(현금)으로만 투자 대상이 제한돼 있어, 연준의 실제 인상 이후에도 RIA 안에서 실행 가능한 대응은 국내 주식형 슬리브 내 방어형(저변동·고배당) 비중 점검과 현금 비중 유지뿐입니다. 연준의 긴축 경로가 매파적으로 재확인될수록, RIA 밖 계좌(일반 위탁·연금저축·ISA)에서 쌓아가는 금·장기국채 등 진짜 헤지 자산의 상대적 역할이 이번 주도 다시 커졌습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">03</span> 환(FX) 코멘트</h2>
+  <p>이번 주 가장 뚜렷한 변화는 원/달러의 방향 전환입니다. 지난주 23개월래 최저(1,336원대)까지 내려갔던 환율이, 실제 FOMC 인상과 매파적 점도표를 거치며 이틀 연속 상승해 1,380원대로 복귀했습니다. 지난주엔 '미 인상 기대 급등'에도 원화가 오히려 강세를 보이는 이례적 조합이었는데, 이번 주는 실제 인상이 확정되자 달러 강세·원화 약세라는 통상적 방향으로 정상화됐습니다. 기보유 해외주식 4천만원의 환노출 관점에서는, 원/달러 상승(원화 약세)이 원화 환산 평가액에는 우호적으로 작용하는 방향입니다. 다만 일부 보도에서는 '강달러 압력이 완화되면 대내 여건을 반영해 환율이 다시 하방 압력을 받을 것'이라는 분석도 함께 나오고 있어, 이번 반등이 추세적인지는 다음 주 흐름으로 재확인이 필요합니다. RIA 계좌 구조상 신규 해외 자산 매수는 대상이 아니므로, 이 환노출은 어디까지나 기보유분에 국한된 감각 점검 대상입니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">04</span> 부동산 데이터 체크 — GTX-A 삼성역, '8월 개통' 재차 불발</h2>
+  <table>
+    <tr><th>지역</th><th>이번 주 신호</th></tr>
+    <tr>
+      <td>태릉입구</td>
+      <td>7/22 서울시 도시·건축공동위원회에서 '태릉입구역 주변 지구단위계획 결정(변경)안'이 수정가결로 확정된 사실이 재확인됐습니다. 용적률 최대 550%·높이 최대 100m를 허용하는 특별계획가능구역이 고시일부터 3년 한시로 지정되며, 청년 창업·문화시설 도입 시 용적률 인센티브가 추가됩니다 <span class="tag uncertain">용적률 수치는 보도별로 550%~800%로 편차, 원 지구단위계획 원문 확인 필요</span>. 9월 기준으로는 실행 초기 단계로, 새로운 공식 발표는 확인되지 않았습니다.</td>
+    </tr>
+    <tr>
+      <td>인덕원(GTX-C)</td>
+      <td>4호선 + GTX-C(2028년 목표) + 월곶판교선 + 동탄인덕원선이 겹치는 4중 역세권 계획에 변동 없음. 이번 주 새로운 공식 발표는 확인되지 않았습니다.</td>
+    </tr>
+    <tr>
+      <td>고양(GTX-A)</td>
+      <td><b>삼성역 개통이 재차 지연됐습니다.</b> 철근 누락 이슈에 따른 보강 공사·안전 검증 절차로 당초 목표였던 8/15 개통이 불발됐고, 업계에서는 연내(2026년 말)가 최선, 완전 정차·완전개통은 2027~2028년으로 순연될 가능성이 거론됩니다. 수서~서울역 구간도 연내 개통을 목표로 재조정된 것으로 파악됩니다 <span class="tag uncertain">확정 일정 아님</span>. (창릉역 신설은 2030년 별도 계획, 변동 없음)</td>
+    </tr>
+    <tr>
+      <td>다산(GTX-B)</td>
+      <td>재정 구간 공정률은 3월 말 기준 5.7%에서 9월 신규 수치가 아직 확인되지 않습니다 <span class="tag uncertain">최신 공정률 미확인</span>. 개통 목표는 공식적으로 2030년이나, 업계에서는 2031년 전후가 더 현실적이라는 시각이 계속 우세합니다. 지난 2주에 걸쳐 정리한 대로 다산 자체에는 GTX-B 정차역이 없고 별내역 환승이 핵심 경로이며, 서울 9호선 강동~남양주 연장(2031년 목표 거론)은 진건지구 편입 관련 예비타당성 검토가 진행 중으로 아직 유동적입니다.</td>
+    </tr>
+  </table>
+  <p style="margin-top:6px;"><b>연간 입주물량·대출규제:</b> 2026년 전국 아파트 입주 예정 물량은 18만3,124가구로 전년 대비 22.5% 감소해 2013년(16만9천가구) 이후 13년 만에 최저 수준으로 집계됐습니다. 수도권 8만8,821가구, 서울 1만8,475가구 수준입니다. 대출 쪽은 스트레스 DSR 3단계(수도권 가산금리 1.5% 전면 적용)가 계속 시행 중이며, 이번 주 새로운 규제 변경 발표는 확인되지 않았습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">05</span> 반도체·빅테크 메모</h2>
+  <p>9/16 코스피에서 삼성전자(253,250원, +1.91%)·SK하이닉스(1,732,000원, +2.49%)가 동반 상승했습니다. HBM4 공급 확대 기대와 2분기 실적 호조가 배경으로 지목됩니다(증권사·리서치기관 전망치 인용, 매수 권유 아님). 미국 빅테크 쪽은 FOMC 이후 뚜렷한 방향성 없이 지지부진할 것이라는 전망이 우세하며, 시장의 관심이 10월 말 빅테크 실적 시즌으로 옮겨갈 것으로 보입니다. 알파벳은 2026년 AI 관련 CAPEX 전망을 기존 1,800억~1,900억달러에서 1,950억~2,050억달러로 상향하며 2027년에도 투자 확대 기조를 재확인한 바 있습니다. 원자재 쪽에서는 국제 금(12월물)이 4,393.30달러/온스로, FOMC 직후 일시 하락했다가 국채금리·유가 하락에 반등했고, WTI는 사우디-후티 휴전 제안 등 공급 우려 완화로 배럴당 99.10달러까지 내렸습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">06</span> RIA 대기예수금 배치 확인 (성장 7 : 안전 3)</h2>
+  <p class="sub">약 1,600만원, RIA 계좌 내 — 국내 주식형 ETF/펀드 + 예탁금(현금)으로만 구성. 지난 2주 연속 체크리스트에 담긴 항목이며, 이 브리프 작성 시점 기준 실행 여부는 확인되지 않았습니다(이미 실행하셨다면 다음 호부터 본 섹션은 생략됩니다).</p>
+  <div class="allocation">
+    <div class="alloc-card">
+      <h3>성장(주식) · 1,120만</h3>
+      <ul>
+        <li>국내 대표지수 ETF — 800만</li>
+        <li>국내 저변동·고배당 ETF — 320만 (방어형 주식이 '보험' 역할 대체)</li>
+      </ul>
+    </div>
+    <div class="alloc-card">
+      <h3>안전 · 480만</h3>
+      <ul>
+        <li>예탁금(현금) — 480만 전액</li>
+        <li>위기방어·저점매수 실탄 용도</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note-box">RIA 계좌는 국내 상장 주식 + 국내 주식 비중 80%↑ ETF/펀드 + 현금(예탁금)만 편입 가능해, 금·채권·초단기채·해외지수 ETF는 애초에 대상이 아닙니다. 진짜 보험(금현물, 장기국채)은 일반 위탁·연금저축·ISA 등 RIA 밖 계좌에서 별도로 쌓는 구조로 접근합니다.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> 이번 주 할 일</h2>
+  <ul class="checklist">
+    <li>연준의 매파적 점도표(연내 1회 추가 인상, 연말 중위 4.10%) 경로를 염두에 두고 RIA 국내 주식형 슬리브의 방어형(저변동·고배당) 비중이 현 배분(320만) 대비 적정한지 재점검</li>
+    <li>RIA 대기예수금 1,600만원 배치 실행 여부 최종 확정(3주 연속 이월 시 우선순위 상향 필요) — 성장 1,120만(국내 대표지수 800 / 국내 저변동·고배당 320), 안전 480만(예탁금 현금 전액) 분할 매수 주문 후 체결 확인</li>
+    <li>원/달러 1,380원대 복귀가 추세적인지 주간 환율 스크랩으로 재확인, 10/22 다음 금통위 일정 캘린더 등록, GTX-A 삼성역 연내 개통 여부 및 다산 GTX-B 9월 신규 공정률 발표 확인</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">08</span> 한 줄 학습 포인트</h2>
+  <div class="quote">
+    "연준에 맞서 싸우지 마라(Don't fight the Fed)."
+    <span class="attr">— 마틴 츠바이크(Martin Zweig), 시장 격언으로 통용 (취지 기준 의역)</span>
+  </div>
+  <p style="margin-top:8px;">지난주 원화가 인상 기대 급등과 반대로 움직였던 것처럼, 시장은 종종 정책 방향과 일시적으로 엇갈리는 신호를 냅니다. 하지만 이번 주처럼 연준이 실제로 행동에 나서면 결국 통상적인 방향(강달러·긴축적 여건)으로 되돌아오는 경향이 있습니다. 한 주의 반대 신호에 계좌별 역할 분리(RIA=국내 주식형+현금, RIA 밖=보험·글로벌) 구조를 흔들기보다, 정책당국의 실제 행동과 점도표 같은 확인 지점을 기준으로 판단을 갱신하는 편이 합리적입니다.</p>
+</section>
+
+<footer>
+  본 브리프는 교육·정보 제공 목적의 개인 리서치 노트이며, 작성자는 라이선스를 보유한 투자자문업자가 아닙니다. 특정 종목·ETF·부동산의 매수/매도를 권유하지 않으며, 본문의 수치·목표가·전망치는 예시 및 참고 자료로 실제 수치와 다를 수 있습니다(특히 FOMC 점도표 경로, 태릉입구 용적률 수치, GTX-A 연내 개통 여부, 다산 GTX-B 최신 공정률, 원/달러 반등의 추세 여부는 출처·기관별 편차가 있거나 미확인 상태라 모두 추정·불확실 표기 대상입니다). 실제 투자·대출·세무 의사결정 전에는 반드시 증권사, 은행, 세무 전문가와 직접 상담하시기 바라며, 투자의 최종 책임은 본인에게 있습니다.
+</footer>
+
+</div>
+</body>
+</html>
