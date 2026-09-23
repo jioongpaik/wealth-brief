@@ -8,6 +8,7 @@ b.ziwoong님의 개인 '웰스 브리프(Private Wealth Brief)' 주간 발행 �
 
 | 발행일 | Vol | 한 줄 요약 | 링크 |
 |---|---|---|---|
+| 2026-09-23 | Vol.10 | 원/달러 FOMC 반등분을 3거래일만에 되돌려 1,358원대로 재하락(유가 4거래일 -9%대 급락이 배경). GTX-C 964일만에 실착공(준공목표 2031년 순연). 관심지역에 구리역·화정 신규 추가해 총 6곳으로 확대. | [briefs/wealth-brief-weekly-20260923.html](briefs/wealth-brief-weekly-20260923.html) |
 | 2026-09-20 | Vol.9 | 9/16 FOMC 실제 0.25%p 인상(3.75~4.00%, 3년2개월만) 및 매파적 점도표(연내 1회 추가 인상)로 원/달러 1,380원대 복귀, 한국 근원 CPI도 2.6%→3.4%로 급가속. GTX-A 삼성역 개통은 철근누락으로 연내(2026년말)로 재차 지연. | [briefs/wealth-brief-weekly-20260920.html](briefs/wealth-brief-weekly-20260920.html) |
 | 2026-09-13 | Vol.8 | 8월 CPI 서프라이즈(코어 MoM+0.3%)로 9/16 FOMC 인상 확률 59%→66~85% 급등, 반대로 원/달러는 1,340원 아래로 23개월래 최저. 다산은 GTX-B 외 서울 9호선 강동~남양주 연장(2031 목표)이 새 변수로 부각. | [briefs/wealth-brief-weekly-20260913.html](briefs/wealth-brief-weekly-20260913.html) |
 | 2026-09-06 | Vol.7 | 미 8월 고용 서프라이즈(+16.2만)로 9월 인상 확률 52%→59%, 국면은 리플레이션 재확인 쪽으로 이동. 다산 GTX-B 심화(별내역 환승 구조) 및 인덕원 GTX-C 실제 착공 지연 확인. | [briefs/wealth-brief-weekly-20260906.html](briefs/wealth-brief-weekly-20260906.html) |
