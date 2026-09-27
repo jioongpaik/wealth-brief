@@ -8,6 +8,7 @@ b.ziwoong님의 개인 '웰스 브리프(Private Wealth Brief)' 주간 발행 �
 
 | 발행일 | Vol | 한 줄 요약 | 링크 |
 |---|---|---|---|
+| 2026-09-27 | Vol.11 | 美 10년물 국채금리 19년 만에 5.1% 돌파, 10월 추가 인상 베팅 55%→70%로 급등하며 리플레이션 압력 재확인. 태릉입구 특별계획가능구역 지정 세부화, 10월 전국 입주물량 65%↑하나 특정지역 집중. | [briefs/wealth-brief-weekly-20260927.html](briefs/wealth-brief-weekly-20260927.html) |
 | 2026-09-23 | Vol.10 | 원/달러 FOMC 반등분을 3거래일만에 되돌려 1,358원대로 재하락(유가 4거래일 -9%대 급락이 배경). GTX-C 964일만에 실착공(준공목표 2031년 순연). 관심지역에 구리역·화정 신규 추가해 총 6곳으로 확대. | [briefs/wealth-brief-weekly-20260923.html](briefs/wealth-brief-weekly-20260923.html) |
 | 2026-09-20 | Vol.9 | 9/16 FOMC 실제 0.25%p 인상(3.75~4.00%, 3년2개월만) 및 매파적 점도표(연내 1회 추가 인상)로 원/달러 1,380원대 복귀, 한국 근원 CPI도 2.6%→3.4%로 급가속. GTX-A 삼성역 개통은 철근누락으로 연내(2026년말)로 재차 지연. | [briefs/wealth-brief-weekly-20260920.html](briefs/wealth-brief-weekly-20260920.html) |
 | 2026-09-13 | Vol.8 | 8월 CPI 서프라이즈(코어 MoM+0.3%)로 9/16 FOMC 인상 확률 59%→66~85% 급등, 반대로 원/달러는 1,340원 아래로 23개월래 최저. 다산은 GTX-B 외 서울 9호선 강동~남양주 연장(2031 목표)이 새 변수로 부각. | [briefs/wealth-brief-weekly-20260913.html](briefs/wealth-brief-weekly-20260913.html) |
