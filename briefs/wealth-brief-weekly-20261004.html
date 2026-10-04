@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Wealth Brief · Vol.12</title>
+<style>
+  :root{
+    --bg:#faf7f2;
+    --paper:#ffffff;
+    --ink:#1f1c18;
+    --ink-soft:#54504a;
+    --line:#e6e0d6;
+    --accent:#8a5a3b;
+    --accent-soft:#f1e6d8;
+    --good:#3d6b4f;
+    --warn:#a3552b;
+    --tag-bg:#efe9de;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Georgia",serif;
+    line-height:1.62;
+    padding:0 0 64px 0;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 24px 0 24px;
+  }
+  header.masthead{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:28px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:26px;
+    line-height:1.3;
+    margin:0 0 10px 0;
+    font-weight:700;
+  }
+  .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .headline-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:16px 18px;
+    margin-bottom:32px;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .headline-box b{color:var(--accent);}
+  section{margin-bottom:34px;}
+  h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    margin:0 0 16px 0;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  h2 .num{color:var(--accent); font-weight:700;}
+  p{margin:0 0 12px 0; font-size:15px;}
+  .sub{font-size:13px; color:var(--ink-soft); margin-top:-6px; margin-bottom:14px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    margin-bottom:10px;
+    background:var(--paper);
+  }
+  th,td{
+    text-align:left;
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    border-bottom:1.5px solid var(--ink);
+  }
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .src{font-size:11px; color:#8a8378;}
+  .tag{
+    display:inline-block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    padding:2px 8px;
+    border-radius:10px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    margin-left:6px;
+  }
+  .tag.uncertain{background:#f6e6d8; color:var(--warn);}
+  .quadrant{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .quadrant .label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  ul{margin:0 0 12px 0; padding-left:20px;}
+  li{margin-bottom:6px; font-size:15px;}
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .checklist li::before{
+    content:"☐";
+    color:var(--accent);
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .allocation{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .alloc-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:14px 16px;
+  }
+  .alloc-card h3{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin:0 0 8px 0;
+    color:var(--ink-soft);
+  }
+  .alloc-card .amt{font-size:20px; font-weight:700; margin-bottom:8px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  .alloc-card ul{margin:0; padding-left:16px; font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; color:var(--ink-soft);}
+  .alloc-card li{margin-bottom:4px;}
+  .note-box{
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-top:10px;
+  }
+  .quote{
+    font-style:italic;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 16px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .quote .attr{
+    display:block;
+    font-style:normal;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--accent);
+    margin-top:6px;
+  }
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:16px;
+    margin-top:36px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  @media (max-width:480px){
+    .allocation{grid-template-columns:1fr;}
+    h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="kicker">Private Wealth Brief · 개인 리서치 노트</div>
+  <h1>2026년 10월 첫째 주 — AI 밸류에이션 경계감에 코스피 6,562까지 급락, FOMC(10/28)·셧다운발 지표 공백 변수 부상</h1>
+  <div class="meta">
+    <span>Vol.12</span>
+    <span>발행일 2026-10-04</span>
+    <span>읽는 시간 약 2~3분</span>
+  </div>
+</header>
+
+<div class="headline-box">
+  <b>이번 주 한 줄:</b> 10/2(금) 코스피가 전일 대비 3.99% 급락한 6,562.72로 마감했습니다. 올해 들어 7월 서킷브레이커, 9월 중순 외국인 4거래일 연속 매도에 이은 세 번째 큰 폭 조정으로, 반도체 대형주 중심의 AI 밸류에이션 경계 매물이 지수를 끌어내린 것으로 보입니다(구체적 낙폭 기여도·당일 수급 주체는 이번 검색에서 완전히 확정하지 못함). 한편 美 FOMC(10/27~28)를 앞두고 일부 외신에서 연방정부 셧다운에 따른 고용·물가지표 발표 공백 가능성이 거론됐으나, 2026년 10월 현재 상황에 정확히 해당하는 보도인지는 이번 검색으로 확인하지 못해 불확실 표기합니다. 부동산 쪽은 서울 아파트값이 역대급 상승 흐름(7월 기준 전월비 +1.27%)을 이어가는 가운데, 11월 전국 입주물량은 10월 대비 약 2배(2만2,203가구)로 늘지만 서울 비중 확대가 핵심입니다.
+</div>
+
+<section>
+  <h2><span class="num">01</span> 거시 스냅샷</h2>
+  <p class="sub">모든 수치는 검색 시점(2026-10-04) 기준 참고용 스냅샷이며, 향후 발표치로 갱신될 수 있습니다.</p>
+  <table>
+    <tr><th>지표</th><th>현재값</th><th>코멘트</th></tr>
+    <tr>
+      <td>한국 기준금리</td>
+      <td class="num">3.00%</td>
+      <td>7월·8월 연속 인상 이후 동결 유지. 다음 금융통화위원회는 10/22(목) 예정 <span class="src">(한국은행)</span></td>
+    </tr>
+    <tr>
+      <td>미 기준금리(FF)</td>
+      <td class="num">3.75~4.00%</td>
+      <td>9/16 FOMC 인상 이후 변동 없음. 다음 회의는 10/27~28(현지시간, 한국시간 10/29 새벽 결과 발표) <span class="tag uncertain">이번 회의의 인상/동결 확률을 이번 검색에서 신뢰성 있게 갱신하지 못함 — 지난 호의 66~70% 추가 인상 베팅이 유지 중인지 다음 호에서 재확인 필요</span></td>
+    </tr>
+    <tr>
+      <td>미 장단기금리차(10Y-2Y)</td>
+      <td class="num">지난주 약 +0.2%p(9/23 기준)</td>
+      <td>10년물이 19년 만에 5.1%를 넘었던 지난주 이후, 이번 주 갱신된 일별 수치를 확인하지 못했습니다 <span class="tag uncertain">이번 주 10년물·2년물 종가 미확인</span></td>
+    </tr>
+    <tr>
+      <td>미 CPI(YoY)</td>
+      <td class="num">3.4% (8월, 변동 없음)</td>
+      <td>9월 CPI는 통상 10월 중순 발표 예정. 일부 외신에서 미 연방정부 셧다운에 따른 노동통계국(BLS) 지표 발표 지연 가능성이 보도됐으나 <span class="tag uncertain">검색 결과가 과거(2025년) 셧다운 사례와 혼재돼 있어, 2026년 10월 현재 실제 셧다운 여부·지표 공백 범위는 확정하지 못함 — 다음 호에서 반드시 재확인</span></td>
+    </tr>
+    <tr>
+      <td>한국 CPI(YoY)</td>
+      <td class="num">3.1% (8월, 변동 없음)</td>
+      <td>근원 CPI는 7월 2.6%→8월 3.4%로 급가속한 상태. 9월 CPI는 통상 10월 초 발표되나 이번 검색에서 공식 수치를 확인하지 못했습니다 <span class="tag uncertain">통계청 9월 소비자물가동향 원자료 재확인 필요</span></td>
+    </tr>
+    <tr>
+      <td>미 고용(NFP)</td>
+      <td class="num">+16.2만 (8월, 변동 없음)</td>
+      <td>9월 고용보고서는 통상 10월 초 발표되나 확인하지 못함. 셧다운이 실제 진행 중이라면 9~10월 고용지표 발표 자체가 지연될 가능성 있음 <span class="tag uncertain">셧다운 진행 여부 자체가 불확실</span></td>
+    </tr>
+    <tr>
+      <td>원/달러</td>
+      <td class="num">약 1,355~1,370원대 (9/29 전후 전망 기준)</td>
+      <td>지난주 10년물 급등에 따른 재상승 압력이 이번 주에도 이어지는지 일별 종가로 확정하지 못했습니다 <span class="tag uncertain">이번 주 정확한 종가 미확인, 2주 연속 — 다음 호 우선 과제</span></td>
+    </tr>
+    <tr>
+      <td>코스피</td>
+      <td class="num">6,562.72 (10/2 종가, -3.99%)</td>
+      <td>올해 들어 7월 서킷브레이커, 9/14 외국인 4거래일 연속 매도(-3%대)에 이은 세 번째 급락 국면. 반도체 대형주 중심의 AI 밸류에이션 경계 매물로 추정 <span class="tag uncertain">업종별·수급 주체별 구체적 기여도는 미확정</span></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">02</span> 국면 판단 — 성장×물가 4사분면</h2>
+  <div class="quadrant">
+    <div class="label">현재 위치 추정: 리플레이션 국면은 유지, 다만 AI/반도체 밸류에이션 조정이라는 새 변동성 축 추가</div>
+    <p style="margin-bottom:0;">거시 지표 자체(금리 동결 수준, 8월 CPI·고용)는 지난주와 변동이 없어 '성장 견조 + 물가 재가속'이라는 리플레이션 국면 판단을 바꿀 근거는 아직 부족합니다. 다만 이번 주는 거시 지표가 아니라 개별 자산군(특히 반도체·AI 관련주)의 밸류에이션 부담이 코스피 급락(-3.99%)이라는 형태로 먼저 터져 나왔다는 점이 다릅니다. 올해 들어 이런 유형의 조정이 7월, 9월 중순에 이어 세 번째로, 국면 자체의 방향 전환이라기보다 고평가 구간에서 반복되는 '숨 고르기'로 보는 편이 합리적이나, 다음 CPI·고용 발표(셧다운 여부에 따라 지연 가능)로 재확인이 필요합니다.</p>
+  </div>
+  <p><b>계좌별 함의:</b> RIA 계좌는 국내 상장 주식 + 국내 주식형 ETF/펀드(국내 비중 80%↑) + 예탁금(현금)으로만 투자 대상이 제한돼 있습니다. 반도체 비중이 큰 국내 대표지수가 이번 급락의 직접 영향권에 있는 만큼, 성장:안전=7:3 배분과 저변동·고배당 ETF 비중은 그대로 유지하고 서두르지 않는 것이 합리적입니다. 다만 반도체 외 종목에 자신이 없다는 점을 고려하면, 이번 조정을 개별 종목 저점매수 기회로 보기보다는 이미 배분된 국내 대표지수 ETF를 통해 분산된 형태로 노출을 유지하는 편이 안전합니다. 안전 슬리브(예탁금)는 '위기방어·저점매수 실탄'이라는 원래 목적대로, 추가 조정이 길어질 경우를 대비해 그대로 남겨두는 것을 권합니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">03</span> 환(FX) 코멘트</h2>
+  <p>원/달러는 9월 말 기준 1,355~1,370원대 레인지로 전망되었고, 지난주 미 10년물 국채금리가 19년 만에 5.1%를 넘으며 재상승 압력을 받던 흐름이 이번 주에도 이어지는지는 일별 종가 기준으로 확정하지 못했습니다 <span class="tag uncertain">2주 연속 정확한 주간 종가 미확인 — 다음 호 최우선 확인 과제</span>. 다만 이번 주 코스피 급락(-3.99%)이 외국인 매도를 동반했다면, 통상 이런 국면에서는 단기적으로 원화 약세(환율 상승) 압력이 함께 나타나는 경향이 있습니다. 기보유 해외주식 4천만원의 환노출 관점에서는 원화 약세 재개가 원화 환산 평가액에는 우호적인 방향이나, 동시에 해외주식 자체의 밸류에이션 조정(미 증시 AI 밸류에이션 피로감 확산 시)과 상쇄될 수 있어 방향성 판단은 유보합니다. RIA 계좌 구조상 신규 해외 자산 매수는 여전히 대상이 아니므로, 이 코멘트는 기보유분에 국한된 감각 점검용입니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">04</span> 부동산 데이터 체크 — 다산(GTX-B) 우선 점검, 관심지역 4곳</h2>
+  <table>
+    <tr><th>지역</th><th>이번 주 신호</th></tr>
+    <tr>
+      <td><b>다산(GTX-B)</b></td>
+      <td>재정 구간 공정률은 3월 말 기준 5.7%에서 최신 수치를 이번 검색에서도 확인하지 못했습니다 <span class="tag uncertain">최신 공정률 미확인, 6주 연속</span>. 단지별 실거래가는 7월 기준 다산한신휴플러스 24평 매매 4억/전세 3.1억 수준부터, 신축인 e편한세상다산 34평 10.7억~11.5억까지 구축·신축 간 편차가 매우 큰 것으로 파악됩니다. 서울 아파트값 전반의 강세(7월 전월비 +1.27%)가 다산에도 일부 전이되는 흐름으로 보이나, 별내역 환승이라는 핵심 변수에는 이번 주 새 소식이 없었습니다.</td>
+    </tr>
+    <tr>
+      <td>인덕원(GTX-C)</td>
+      <td>9/15 실착공(964일 만) 이후 이번 주 특별한 새 소식은 확인되지 않았습니다. 총사업비 약 4조9,272억원, 목표 준공 2031년 유지. 4호선+GTX-C+월곶판교선+동탄인덕원선 쿼드러플 역세권 구상도 변동 없습니다.</td>
+    </tr>
+    <tr>
+      <td>태릉입구</td>
+      <td>역세권 용도지역 상향을 통한 상업·업무 복합개발 기조는 유지되고 있으며, 이번 주 새로운 보도는 확인되지 않았습니다. 다만 인접한 태릉골프장 개발은 조선왕릉 세계유산 영향평가 심의가 연내 완료 목표로 진행 중이며, 통과 시 지구지정·승인을 거쳐 2029년 상반기 착공 구상이 거론됩니다 <span class="tag uncertain">일정은 세계유산 영향평가 결과에 따라 유동적</span>.</td>
+    </tr>
+    <tr>
+      <td>고양(GTX-A)</td>
+      <td>삼성역 2026년 무정차 통과, 2028년 완전 개통 목표가 재확인됩니다(철근 누락 이슈로 기존 계획 대비 지연). 창릉역 신설은 고양창릉지구 조성 시기에 맞춰 2030년경으로 여전히 유동적이며, 이번 주 새로운 진전 소식은 없었습니다.</td>
+    </tr>
+  </table>
+  <p style="margin-top:6px;"><b>입주물량·가격·대출규제:</b> 2026년 11월 전국 아파트 입주 예정 물량은 2만2,203가구로 10월 대비 약 2배 증가할 전망이며, 수도권이 1만3,321가구(전월 대비 약 9배)로 급증하고 서울은 7,242가구로 올해 월별 최대 규모입니다. 다만 이는 일부 대단지 입주 시점이 몰린 결과로, 전국 공급 부족 기조 자체를 바꾸는 신호는 아닌 것으로 보입니다. 서울 주택 매매가격은 7월 기준 전월비 +1.09%(아파트 +1.27%)로 2013년 통계 작성 이후 최고 수준의 연간 상승률(2025년 +8.98%) 흐름을 이어가고 있어, 4년 내 6억대 매수 목표 대비 가격 상승 속도를 계속 주시할 필요가 있습니다. 전세시장은 8월 기준 수도권 +0.53%(서울 +0.68%) 상승폭을 유지했습니다. 대출 쪽은 스트레스 DSR 3단계가 전 업권에 전면 적용된 상태이며, 2026년부터 지방 주택담보대출에도 스트레스 DSR이 단계적으로 강화될 예정이라는 보도가 있습니다 <span class="tag uncertain">지방 확대 시행 시기·세부 수치는 금융위 공식 발표 원문 재확인 권장</span>.</td>
+</section>
+
+<section>
+  <h2><span class="num">05</span> 반도체·빅테크 메모</h2>
+  <p>이번 주 코스피 급락의 중심에는 반도체 대형주가 있었던 것으로 보이며, 올해 반복된 'AI 밸류에이션 경계' 패턴(7월 서킷브레이커, 9월 중순 외국인 매도)의 연장선으로 해석됩니다. 펀더멘털 측면에서는 삼성전자가 HBM4 출하를 공식화(JEDEC 표준 8Gbps 대비 약 46% 상회하는 11.7Gbps 동작 속도)했고, SK하이닉스는 기술 성숙도·수율 안정성에서 앞선 가운데 엔비디아向 양산 체제의 '시스템 최적화' 단계에 있는 것으로 파악됩니다. 다음 달 엔비디아 연례 행사(GTC)에서 양사가 나란히 차세대(6·7세대) HBM 로드맵을 공개할 예정이라는 보도도 있어, 중장기 수요 기반 자체가 훼손된 신호는 아직 없습니다(리서치 인용, 매수 권유 아님). 다만 2028년 이후 신규 메모리 생산설비 가동에 따른 중장기 공급과잉 우려가 밸류에이션 조정의 배경 중 하나로 꾸준히 거론되고 있어, 단기 변동성과 중장기 펀더멘털을 분리해서 보는 태도가 필요합니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">06</span> RIA 대기예수금 배치 확인 (성장 7 : 안전 3)</h2>
+  <p class="sub">약 1,600만원, RIA 계좌 내 — 국내 주식형 ETF/펀드 + 예탁금(현금)으로만 구성. 6주 연속 체크리스트에 담긴 항목이며, 이 브리프 작성 시점 기준 실행 여부는 확인되지 않았습니다(이미 실행하셨다면 다음 호부터 본 섹션은 생략됩니다).</p>
+  <div class="allocation">
+    <div class="alloc-card">
+      <h3>성장(주식) · 1,120만</h3>
+      <ul>
+        <li>국내 대표지수 ETF — 800만</li>
+        <li>국내 저변동·고배당 ETF — 320만 (방어형 주식이 '보험' 역할 대체)</li>
+      </ul>
+    </div>
+    <div class="alloc-card">
+      <h3>안전 · 480만</h3>
+      <ul>
+        <li>예탁금(현금) — 480만 전액</li>
+        <li>위기방어·저점매수 실탄 용도</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note-box">RIA 계좌는 국내 상장 주식 + 국내 주식 비중 80%↑ ETF/펀드 + 현금(예탁금)만 편입 가능해, 금·채권·초단기채·해외지수 ETF는 애초에 대상이 아닙니다. 이번 주처럼 국내 대표지수가 급락한 날은 오히려 800만원 분할 매수 계획을 점검하기 좋은 시점일 수 있으나, 진짜 보험(금현물, 장기국채)은 여전히 RIA 밖 계좌에서 별도로 쌓는 구조를 유지합니다.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> 이번 주 할 일</h2>
+  <ul class="checklist">
+    <li>RIA 대기예수금 1,600만원 배치 실행 여부 최종 확정(6주 연속 이월 중 — 이번 주 코스피 급락으로 국내 대표지수 ETF 800만원 분할 매수 타이밍 재점검)</li>
+    <li>원/달러 환율(2주째 종가 미확인)과 미 10년물 금리차(1주째 미확인), 그리고 美 연방정부 셧다운 여부·9월 CPI/고용 발표 일정을 함께 재확인해 FOMC(10/28) 결과 예측 감각 업데이트</li>
+    <li>다산 GTX-B 공정률(6주째 미확인)을 국가철도공단 자료로, 태릉골프장 개발 세계유산 영향평가 진행 상황을 노원구청·문화재청 공고로 원자료 대조</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">08</span> 한 줄 학습 포인트</h2>
+  <div class="quote">
+    "단기적으로 시장은 투표 기계지만, 장기적으로는 저울이다."
+    <span class="attr">— 벤저민 그레이엄(Benjamin Graham)</span>
+  </div>
+  <p style="margin-top:8px;">이번 주 코스피가 하루 만에 약 4% 급락한 것은 '투표 기계'로서의 시장, 즉 심리와 수급이 단기 가격을 크게 흔드는 모습을 그대로 보여줍니다. 반면 삼성전자·SK하이닉스의 HBM 출하·수율 개선 같은 펀더멘털 데이터는 하루 사이 바뀌지 않습니다. RIA 안에서 성장:안전 7:3이라는 미리 정한 배분 원칙을 지키고, 급락 당일의 감정에 따라 계획을 바꾸지 않는 것이 '저울'의 관점을 지키는 방법입니다. 부동산 역시 서울 아파트값이 역대급으로 오르는 와중에도, 4년이라는 시간 여유를 활용해 조급해하지 않고 데이터를 계속 쌓아가는 접근이 여전히 유효합니다.</p>
+</section>
+
+<footer>
+  본 브리프는 교육·정보 제공 목적의 개인 리서치 노트이며, 작성자는 라이선스를 보유한 투자자문업자가 아닙니다. 특정 종목·ETF·부동산의 매수/매도를 권유하지 않으며, 본문의 수치·목표가·전망치는 예시 및 참고 자료로 실제 수치와 다를 수 있습니다(특히 이번 호의 美 연방정부 셧다운·지표 발표 지연 여부, 이번 주 원/달러 정확한 종가, 미 10Y-2Y 금리차, 10월 FOMC 시장 반영 확률, 한국 9월 CPI, 코스피 급락의 구체적 수급 주체, 다산 GTX-B 9월 공정률, 태릉골프장 개발 일정, 지방 스트레스 DSR 확대 세부 시행안은 모두 미확인·불확실 표기 대상입니다). 실제 투자·대출·세무 의사결정 전에는 반드시 증권사, 은행, 세무 전문가와 직접 상담하시기 바라며, 투자의 최종 책임은 본인에게 있습니다.
+</footer>
+
+</div>
+</body>
+</html>
