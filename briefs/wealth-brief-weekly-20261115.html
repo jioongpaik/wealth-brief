@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Wealth Brief · Vol.18</title>
+<style>
+  :root{
+    --bg:#faf7f2;
+    --paper:#ffffff;
+    --ink:#1f1c18;
+    --ink-soft:#54504a;
+    --line:#e6e0d6;
+    --accent:#8a5a3b;
+    --accent-soft:#f1e6d8;
+    --good:#3d6b4f;
+    --warn:#a3552b;
+    --tag-bg:#efe9de;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Georgia",serif;
+    line-height:1.62;
+    padding:0 0 64px 0;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 24px 0 24px;
+  }
+  header.masthead{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:28px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:26px;
+    line-height:1.3;
+    margin:0 0 10px 0;
+    font-weight:700;
+  }
+  .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .headline-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:16px 18px;
+    margin-bottom:32px;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .headline-box b{color:var(--accent);}
+  section{margin-bottom:34px;}
+  h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    margin:0 0 16px 0;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  h2 .num{color:var(--accent); font-weight:700;}
+  p{margin:0 0 12px 0; font-size:15px;}
+  .sub{font-size:13px; color:var(--ink-soft); margin-top:-6px; margin-bottom:14px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    margin-bottom:10px;
+    background:var(--paper);
+  }
+  th,td{
+    text-align:left;
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    border-bottom:1.5px solid var(--ink);
+  }
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .src{font-size:11px; color:#8a8378;}
+  .tag{
+    display:inline-block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    padding:2px 8px;
+    border-radius:10px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    margin-left:6px;
+  }
+  .tag.uncertain{background:#f6e6d8; color:var(--warn);}
+  .quadrant{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .quadrant .label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  ul{margin:0 0 12px 0; padding-left:20px;}
+  li{margin-bottom:6px; font-size:15px;}
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .checklist li::before{
+    content:"☐";
+    color:var(--accent);
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .allocation{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .alloc-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:14px 16px;
+  }
+  .alloc-card h3{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin:0 0 8px 0;
+    color:var(--ink-soft);
+  }
+  .alloc-card .amt{font-size:20px; font-weight:700; margin-bottom:8px; font-family:"Helvetica Neue",Arial,sans-serif;}
+  .alloc-card ul{margin:0; padding-left:16px; font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; color:var(--ink-soft);}
+  .alloc-card li{margin-bottom:4px;}
+  .note-box{
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-top:10px;
+  }
+  .quote{
+    font-style:italic;
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 16px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .quote .attr{
+    display:block;
+    font-style:normal;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--accent);
+    margin-top:6px;
+  }
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:16px;
+    margin-top:36px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  @media (max-width:480px){
+    .allocation{grid-template-columns:1fr;}
+    h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="kicker">Private Wealth Brief · 개인 리서치 노트</div>
+  <h1>2026년 11월 셋째 주 — 코스피 11/6 5,059.69(주간 -11.71%, 서킷브레이커 발동)까지 급락 후 11/10~11 반등해 5,300선 부근 회복. 美 12월 인상 베팅은 여전히 높은 수준, 韓 11/26 금통위 D-11</h1>
+  <div class="meta">
+    <span>Vol.18</span>
+    <span>발행일 2026-11-15</span>
+    <span>읽는 시간 약 2~3분</span>
+  </div>
+</header>
+
+<div class="headline-box">
+  <b>이번 주 한 줄:</b> 코스피는 11/2~11/6 한 주간 11.71% 급락하며 11/6 5,059.69로 마감(장 초반 8%대 급락에 서킷브레이커 발동)했습니다 — 美 중간선거 이후 AI 데이터센터 규제 강화 우려, 외국인 대규모 매도, AI 인프라 기업(코어위브)의 자금조달 부담 재부각이 배경으로 보도됩니다. 이후 11/9 -0.81%(5,000선 유지), 11/10 외국인·기관 매수에 +4.39%(5,200선), 11/11 +2%대(5,300선 부근)로 급반등했다고 보도됩니다 <span class="tag uncertain">11/12 이후 공식 종가 미확인, 11/6 5,059.69 종가는 2차 보도 1건만 확인</span>. 지난 호에서 "5,550선" 표기가 연중 다른 수치와 불일치한다고 지적했는데, 이번 주 확인된 11/6 종가(5,059.69)를 보면 그 표기는 다른 날짜이거나 오류였을 가능성이 커 보입니다. 美 쪽은 10/28 FOMC 동결(3.75~4.00%) 이후 12/9 추가 인상 베팅이 한 매체 기준 85%까지 올랐다는 보도가 있으나 교차 확인은 안 됐습니다. 韓 11/26 금통위는 증권가 전망이 갈리는 가운데(NH: 인상 유지, KB: 인상 후 동결 가능성) D-11 시점입니다.
+</div>
+
+<section>
+  <h2><span class="num">01</span> 거시 스냅샷</h2>
+  <p class="sub">모든 수치는 검색 시점(2026-11-15) 기준 참고용 스냅샷이며, 향후 발표치로 갱신될 수 있습니다.</p>
+  <table>
+    <tr><th>지표</th><th>현재값</th><th>코멘트</th></tr>
+    <tr>
+      <td>미 기준금리(FF)</td>
+      <td class="num">3.75~4.00% (10/28 동결 유지)</td>
+      <td>다음 결정은 12/9. 10월 고용 서프라이즈 보도 이후 추가 인상 베팅이 높은 수준을 유지하고 있습니다 <span class="tag uncertain">11월 들어 연준 위원 발언 신규 확인 안 됨</span></td>
+    </tr>
+    <tr>
+      <td>美 12/9 FOMC 인상(0.25%p) 확률</td>
+      <td class="num">약 85% (단일 2차 보도, 10/28 동결 직후 기준)</td>
+      <td>지난 호 확인치(77~78%, 11/6 고용 발표 직후)보다 더 높은 수치가 한 매체(노라다부동산)에서 보도됐으나, CME FedWatch 1차 페이지나 다른 매체의 교차 확인은 이번 검색으로 하지 못했습니다 <span class="tag uncertain">cmegroup.com/fedwatch 직접 대조 필요, 단일 출처</span></td>
+    </tr>
+    <tr>
+      <td>美 장단기금리차(10Y-2Y)</td>
+      <td class="num">+0.35%p (11/6, FRED)</td>
+      <td>11/5 +0.38%p, 11/4 +0.32%p 수준에서 유지되며 여전히 양(+)의 스프레드로 역전 신호는 없습니다 <span class="src">(FRED T10Y2Y)</span>. 11/7 이후 갱신치는 미확인.</td>
+    </tr>
+    <tr>
+      <td>한국 기준금리</td>
+      <td class="num">3.00% (10/22 동결, 7명 전원일치)</td>
+      <td>다음 결정은 11/26. 증권가 전망이 갈립니다 — NH투자증권은 25bp 인상 전망 유지, KB증권은 인상 후 동결 가능성을 언급합니다. 3분기 GDP 속보치(11/27 발표)가 핵심 변수로 꼽히나 금통위(11/26)보다 하루 늦게 나와 선반영 여부는 불확실합니다 <span class="tag uncertain">증권사별 전망 혼재, GDP 발표일과 회의일 순서 재확인 필요</span></td>
+    </tr>
+    <tr>
+      <td>코스피</td>
+      <td class="num">11/6 종가 5,059.69 (주간 -11.71%) → 11/10 +4.39%(5,200선) → 11/11 +2%대(5,300선 부근)</td>
+      <td>11/6 장중 8%대 급락으로 서킷브레이커 발동이 확인됩니다. 이후 외국인·기관 매수 전환으로 급반등했다고 보도됩니다 <span class="tag uncertain">11/6 종가·주간 수익률은 파이낸셜뉴스 단일 출처, 11/10~11 수치는 시황 기사 경유, 11/12 이후 미확인, 지난 호 "5,550선" 표기와의 불일치는 재검증 필요</span></td>
+    </tr>
+    <tr>
+      <td>원/달러</td>
+      <td class="num">11/6 종가 1,363.80원(전일대비 +0.42%)</td>
+      <td>10/7~11/6 구간 고가 1,364.95원·저가 1,320.46원·평균 1,337.88원(Investing.com 경유 재인용). 11월 삼성전자 배당 역송금(11/27 지급, 달러 환전 수요 추정)과 외국인 환헤지 수급이 겹쳐 상방 변동성 확대 가능성이 보도됩니다 <span class="tag uncertain">1차 출처(서울외국환중개) 미대조, 11/7 이후 공식 종가 미확인</span></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">02</span> 국면 판단 — 성장×물가 4사분면</h2>
+  <div class="quadrant">
+    <div class="label">현재 위치 추정: 美는 "성장 재가속 경계"(리플레이션) 국면 유지, 韓은 11/26 결정 대기로 판단 보류. 이번 주 코스피 급락·반등은 매크로 국면보다 AI 밸류에이션·신용위험 재료가 더 크게 작동</div>
+    <p style="margin-bottom:0;">지난 호에 이어 美는 10월 고용 서프라이즈 이후 12월 인상 베팅이 높은 수준을 유지하며 리플레이션 경계 국면이 이어지고 있습니다. 다만 이번 주 코스피의 극단적 변동성(-11.71%→+4.39%→+2%대)은 금리 국면보다는 美 중간선거 이후 AI 데이터센터 규제 우려와 AI 인프라 기업(코어위브)의 자금조달 부담 재부각, 외국인 수급이 직접적 배경으로 보도됩니다. 즉 같은 리플레이션 국면 안에서도 '거시 금리'와 '개별 AI 밸류에이션 쇼크'가 분리된 채 동시에 움직이는 모습으로, 국면 판단 하나로 모든 변동성을 설명하기는 어려운 한 주였습니다. 한국은 11/26 금통위 결과가 없어 판단을 보류하되, 증권가 전망이 인상 쪽과 동결 쪽으로 나뉘는 점은 지난 호(8/11명이 인상 전망)보다 불확실성이 다소 커진 것으로 보입니다.</p>
+  </div>
+  <p><b>계좌별 함의:</b> RIA 계좌는 국내 상장 주식 + 국내 주식형 ETF/펀드(국내 비중 80%↑) + 예탁금(현금)으로만 투자 대상이 제한돼 있습니다. 이번 주처럼 코스피가 하루에 4~8%대로 출렁이는 구간은, 평소보다 신규 매수 타이밍의 변동성이 훨씬 커진 시점입니다. 11/6 저점(5,059.69 추정)에서 11/10~11 반등이 이미 상당 부분 진행된 뒤이므로, 국내 대표지수 ETF 1차 분할 매수를 "저점 추격"으로 서두르기보다 11/26 금통위 결과와 코스피 공식 종가를 재확인한 뒤 판단하는 편을 유지합니다. 금·채권 등 진짜 보험 자산은 이번 주도 RIA 밖 계좌에서만 쌓는 구조를 유지합니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">03</span> 환(FX) 코멘트</h2>
+  <p>원/달러는 11/6 기준 1,363.80원으로 10월 중 1,320~1,340원대보다 다소 높아진 구간입니다 <span class="tag uncertain">11/7 이후 공식 종가 미확인</span>. 11월 중 삼성전자 배당 역송금(11/27 지급), 외국인 환헤지, 해외 기업 IPO 관련 달러 조달 수요가 겹쳐 단기 상방 변동성이 커질 수 있다는 분석이 보도됩니다. 다만 韓 11/26 금통위에서 인상이 결정될 경우 한·미 금리차 방향이 또 한 번 바뀔 수 있어, 방향성을 미리 단정하기는 이릅니다. 기보유 해외주식 4천만원의 환노출 관점에서는, 이번 주 코스피 급락·반등 국면에서 원/달러가 함께 크게 흔들렸을 가능성이 있다는 점을 참고 변수로 기록해두되, 11/26 금통위·12/9 FOMC 두 이벤트를 모두 확인하기 전까지는 관찰을 권합니다. RIA 계좌 구조상 신규 해외 자산 매수는 여전히 대상이 아니므로, 이 코멘트는 기보유분에 국한된 감각 점검용입니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">04</span> 부동산 데이터 체크 — 다산(GTX-B) 우선 점검, 관심지역 4곳</h2>
+  <table>
+    <tr><th>지역</th><th>이번 주 신호</th></tr>
+    <tr>
+      <td><b>다산(GTX-B)</b></td>
+      <td>다산 구간 자체의 새 공정률은 이번 주도 확인하지 못했습니다(기존 확인치 5.7%, 3월말 기준에서 12주 연속 갱신 없음) <span class="tag uncertain">다산 구간 최신 공정률 미확인, 12주 연속</span>. 참고 수치로 대우건설이 맡은 인천 부평·남동 및 남양주 화도읍 구간은 2026년 3월 기사 기준 착공 초기(공정률 10% 안팎)이며, 공정률이 20%대를 넘어서면서 속도가 붙을 전망이라는 분석도 있으나 화도읍 구간이 다산 신도시와 동일 구간인지는 확인되지 않습니다 <span class="tag uncertain">화도읍 구간과 다산 구간의 정확한 경계·동일 여부 1차 자료 대조 필요</span>. GTX-B 개통 목표는 이전 호에서 2031년 순연 보도를 전했으나 이번 주 추가 확인은 되지 않았습니다.</td>
+    </tr>
+    <tr>
+      <td>인덕원(GTX-C)</td>
+      <td>인덕원역은 장기적으로 GTX-C·지하철 4호선·월곶판교선·인덕원동탄선 등 4개 노선이 모이는 환승 거점으로 계획돼 있다는 점이 재확인됩니다. 최근 거래에서 인근 단지가 신고가를 기록했다는 보도도 있습니다 <span class="tag uncertain">신고가 보도 시점·단지명 구체 미확인</span>. GTX-C 본선(양주~수원)은 2026년 9월 착공(2024년 1월 기공식 이후 약 2년 지연)이 재확인되나, 인덕원 구간 자체의 새 공정 소식은 없습니다.</td>
+    </tr>
+    <tr>
+      <td>태릉입구</td>
+      <td>이번 주 추가 검색에서도 새 소식은 확인되지 않았습니다. 기존 확인 정보(태릉우성 정비구역 지정, 추진위원회 승인 단계)가 유지됩니다.</td>
+    </tr>
+    <tr>
+      <td>고양(GTX-A)</td>
+      <td>이번 주 추가 검색에서도 새 소식은 확인되지 않았습니다. 기존 확인 정보(삼성역 복합환승센터 공사, 창릉역 관련)가 유지됩니다.</td>
+    </tr>
+  </table>
+  <p style="margin-top:6px;"><b>전세·입주물량:</b> 11월 전국 아파트 입주물량 약 1.1만세대(서울 488세대) 수치는 지난 호와 동일하게 유지됩니다. 2026년 서울 연간 입주물량 전망은 기관별로 큰 차이를 보입니다 — 부동산R114는 2만9,161세대(2025년 4만2,611세대 대비 감소), 직방은 1만6,412세대(전년 3만1,856세대 대비 48% 급감)로, 두 기관 간 수치 차이가 1만3천세대 가까이 벌어져 있어 어느 쪽을 쓰더라도 출처를 명시할 필요가 있습니다 <span class="tag uncertain">서울 2026년 입주물량 전망 기관별 큰 차이, 지난 호의 1만8,880세대 수치와도 불일치 — 1차 출처 대조 필요</span>. 전세 시장은 대출규제 강화로 갭투자가 어려워져 물건이 줄며 상승 압력이 있다는 분석과, 송파·강동 등 대규모 입주 단지 지역은 오히려 하락한다는 보도가 함께 확인됩니다 — 한국부동산원 기준 서울 아파트 전세가 상승폭은 11월 셋째 주 0.04%로 전주보다 0.01%포인트 둔화했다고 보도됩니다 <span class="tag uncertain">주간 수치 2차 보도, 1차 발표자료 미대조</span>. 서울 아파트 평균 월세는 9월 기준 166만1천원(전년 대비 +15.1%)으로, 전세의 월세화 흐름이 이어지고 있습니다. 전세가율 자체의 최신 수치는 이번 검색에서도 확인하지 못했습니다 <span class="tag uncertain">서울 전세가율 최신 수치 미확인, 7주 연속</span>.</p>
+</section>
+
+<section>
+  <h2><span class="num">05</span> 반도체·빅테크 메모</h2>
+  <p>엔비디아가 맞춤형 HBM(NVHBM)의 베이스 다이 공정을 TSMC로 일원화하는 표준화를 추진 중이라는 보도가 있습니다 — 업체별로 다른 공정을 적용할 때 생기는 검증·관리 부담을 줄이려는 전략으로 풀이되며, 삼성전자·SK하이닉스에 미칠 구체적 영향은 확인되지 않습니다 <span class="tag uncertain">표준화 추진 보도 1건, 확정 여부·시행 시점 미확인</span>. 삼성전자·SK하이닉스는 HBM "완판"을 선언했지만, 엔비디아 사양·출시 일정이 바뀌면 납품 지연과 추가 검증 부담이 생길 수 있다는 분석도 함께 나옵니다. 11/9~10 서울 코엑스에서 열린 '엔비디아 AI 데이 서울 2026'에 양사가 대규모로 참여했고, 삼성전자는 10월 SEDEX 2026에서 HBM4E(7세대) 모형을 전시했습니다(리서치 인용, 매수 권유 아님). 이번 주 코스피 급락의 직접 배경 중 하나로 지목된 AI 인프라 기업(코어위브) 자금조달 부담 재부각은 반도체 밸류에이션에도 영향을 줄 수 있는 변수로 계속 주시할 필요가 있습니다.</p>
+</section>
+
+<section>
+  <h2><span class="num">06</span> RIA 대기예수금 배치 확인 (성장 7 : 안전 3)</h2>
+  <p class="sub">약 1,600만원, RIA 계좌 내 — 국내 주식형 ETF/펀드 + 예탁금(현금)으로만 구성. 12주 연속 체크리스트에 담긴 항목이며, 이 브리프 작성 시점 기준 실행 여부는 확인되지 않았습니다(이미 실행하셨다면 다음 호부터 본 섹션은 생략됩니다).</p>
+  <div class="allocation">
+    <div class="alloc-card">
+      <h3>성장(주식) · 1,120만</h3>
+      <ul>
+        <li>국내 대표지수 ETF — 800만</li>
+        <li>국내 저변동·고배당 ETF — 320만 (방어형 주식이 '보험' 역할 대체)</li>
+      </ul>
+    </div>
+    <div class="alloc-card">
+      <h3>안전 · 480만</h3>
+      <ul>
+        <li>예탁금(현금) — 480만 전액</li>
+        <li>위기방어·저점매수 실탄 용도</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note-box">RIA 계좌는 국내 상장 주식 + 국내 주식 비중 80%↑ ETF/펀드 + 현금(예탁금)만 편입 가능해, 금·채권·초단기채·해외지수 ETF는 애초에 대상이 아닙니다. 이번 주는 코스피가 한 주 사이 -11.71%에서 서킷브레이커까지 찍고 다시 급반등하는 극단적 변동성을 보였습니다. 이미 반등이 상당 부분 진행된 시점이므로, 국내 대표지수 ETF 800만원 1차 분할 매수를 "저점 추격"으로 서두르기보다 11/26 금통위 결과와 코스피 공식 종가를 먼저 확인한 뒤 결정해도 늦지 않습니다. 오히려 안전 480만(현금)은 이런 급락 구간에서 저점매수 실탄으로서의 역할이 이번 주처럼 구체적으로 시험되는 시기입니다. 진짜 보험(금현물, 장기국채)은 여전히 RIA 밖 계좌에서 별도로 쌓는 구조를 유지합니다.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> 이번 주 할 일</h2>
+  <ul class="checklist">
+    <li>코스피 11/6 종가(5,059.69, 단일 출처)·주간 -11.71%와 11/12 이후 공식 종가를 KRX 정보데이터시스템으로 재확인, 美 12/9 FOMC 인상 확률(약 85%, 단일 2차 보도)을 CME FedWatch 1차 페이지로 교차 확인</li>
+    <li>11/26 한국은행 금융통화위원회 결정(증권가 전망 인상/동결로 분분) 결과 확인 및 RIA 대기예수금 1,600만원 배치 실행 여부 최종 확정(12주 연속 이월 중) — 이번 주 코스피 급락·반등을 복기해 분할 매수 타이밍 재점검</li>
+    <li>다산 GTX-B 구간 공정률(12주째 갱신 없음) 국토교통부·GTX-B 시행사 1차 공시로 대조, 서울 2026년 연간 입주물량(기관별 1만6,412세대~2만9,161세대 큰 편차)·전세가율 최신치 한국부동산원·부동산R114 자료로 확인</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">08</span> 한 줄 학습 포인트</h2>
+  <div class="quote">
+    "다른 사람들이 욕심을 낼 때 두려워하고, 다른 사람들이 두려워할 때 욕심을 내라."
+    <span class="attr">— 워런 버핏(Warren Buffett)</span>
+  </div>
+  <p style="margin-top:8px;">이번 주 코스피가 서킷브레이커까지 발동하며 급락했다가 며칠 만에 4~5%씩 반등한 장면은, 이 원칙이 왜 말로는 쉽고 실행은 어려운지를 다시 보여줍니다. 급락 당일에는 '더 떨어질 것 같다'는 두려움이, 반등 당일에는 '놓쳤다'는 조급함이 번갈아 찾아오기 마련입니다. RIA 안전 슬리브에 현금 480만원을 남겨둔 것은 바로 이런 순간에 감정이 아니라 미리 정한 규칙으로 움직이기 위한 장치입니다. 다만 이미 반등이 상당 부분 진행된 지금, 이번 급락을 "놓친 저점"으로 여기고 서둘러 따라 들어가기보다 11/26 금통위 결과를 확인한 뒤 판단하는 것이 원칙에 더 가깝습니다.</p>
+</section>
+
+<footer>
+  본 브리프는 교육·정보 제공 목적의 개인 리서치 노트이며, 작성자는 라이선스를 보유한 투자자문업자가 아닙니다. 특정 종목·ETF·부동산의 매수/매도를 권유하지 않으며, 본문의 수치·목표가·전망치는 예시 및 참고 자료로 실제 수치와 다를 수 있습니다(특히 이번 호의 코스피 11/6 종가·주간 수익률(단일 2차 출처), 11/12 이후 코스피·원/달러 공식 종가(미확인), 美 12/9 FOMC 인상 확률 85%(단일 2차 보도, 교차 확인 안 됨), 11/26 금통위 결과(발행 시점 미발표), 다산 GTX-B 공정률(12주 연속 미확인), 서울 2026년 연간 입주물량(기관별 수치 편차 큼), 서울 전세가율 최신 수치, HBM 공정 표준화 추진 보도는 모두 미확인·불확실 표기 대상입니다). 실제 투자·대출·세무 의사결정 전에는 반드시 증권사, 은행, 세무 전문가와 직접 상담하시기 바라며, 투자의 최종 책임은 본인에게 있습니다.
+</footer>
+
+</div>
+</body>
+</html>
